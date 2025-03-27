@@ -1,1 +1,19 @@
-<router-outlet />
+<div class="flex flex-col min-h-screen">
+  <header class="bg-gray-200 ">
+    <nav class="bg-brand-primary p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <a routerLink="/" class="text-2xl font-bold"> My Angular Blog </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="flex-grow">
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="bg-gray-800 text-white py-6 mt-8">
+    <div class="container mx-auto text-center">
+      © 2025 My Angular Blog. All rights reserved.
+    </div>
+  </footer>
+</div>
