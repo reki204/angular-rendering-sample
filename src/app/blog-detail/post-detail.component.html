@@ -3,14 +3,29 @@
   記事が見つかりませんでした。
 </div>
 } @else {
-<div class="container mx-auto py-8" *ngIf="post">
+<div class="container mx-auto py-8">
+  <div class="bg-green-100 p-4 rounded-lg mb-6">
+    <p class="text-center">
+      このページは
+      <span class="font-bold">{{ renderingMode | uppercase }}</span>
+      モードでレンダリングされています
+    </p>
+    <p class="text-center text-sm mt-2">
+      取得時刻: {{ fetchTime | date : "yyyy-MM-dd HH:mm:ss" }}
+      <span class="ml-2 px-2 py-1 bg-green-200 rounded text-xs">
+        {{ isServer ? "サーバーで生成" : "クライアントで再取得" }}
+      </span>
+    </p>
+  </div>
+
   <article class="bg-white shadow-lg rounded-xl p-8">
     <header class="mb-6">
-      <h1 class="text-4xl font-bold text-gray-900 mb-4">
+      <h1 class="text-3xl font-bold text-gray-900 mb-4">
         {{ post.title }}
       </h1>
       <div class="flex items-center text-gray-600">
-        <span class="mr-4"> 著者: {{ post.userId }} </span>
+        <span class="mr-4"> 著者ID: {{ post.userId }} </span>
+        <span> 記事ID: {{ post.id }} </span>
       </div>
     </header>
 
@@ -19,12 +34,18 @@
     </div>
   </article>
 
-  <div class="mt-6 text-center">
+  <div class="mt-6 text-center flex justify-center gap-4">
     <a
       routerLink="/posts"
       class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300 transition"
     >
-      戻る
+      記事一覧に戻る
+    </a>
+    <a
+      routerLink="/"
+      class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+    >
+      ホームに戻る
     </a>
   </div>
 </div>

@@ -1,9 +1,32 @@
 @import "tailwindcss";
 
+:root {
+  --brand-primary: #3b82f6;
+  --brand-secondary: #10b981;
+}
+
 body {
   @apply bg-gray-50 text-gray-900;
 }
 
 .container {
   @apply max-w-4xl mx-auto px-4;
+}
+
+.bg-brand-primary {
+  background-color: var(--brand-primary);
+  @apply text-white;
+}
+
+/* レンダリングモード別のスタイル */
+.client-mode {
+  @apply border-blue-500;
+}
+
+.server-mode {
+  @apply border-green-500;
+}
+
+.prerendered-mode {
+  @apply border-amber-500;
 }
