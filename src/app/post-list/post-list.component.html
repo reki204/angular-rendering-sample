@@ -1,0 +1,20 @@
+<div class="container mx-auto py-8">
+  <h1 class="text-3xl font-bold mb-6 text-center">📚 ブログ記事一覧</h1>
+  <div class="grid md:grid-cols-2 gap-6">
+    @for (post of posts; track post.id) {
+    <article
+      class="bg-white shadow-md rounded-lg p-6 hover:shadow-xl transition-shadow"
+    >
+      <h2 class="text-xl font-semibold mb-3">
+        <a
+          [routerLink]="['/posts', post.id]"
+          class="text-brand-primary hover:underline"
+        >
+          {{ post.title }}
+        </a>
+      </h2>
+      <div class="text-gray-600 mb-4">{{ post.body | slice : 0 : 100 }}...</div>
+    </article>
+    }
+  </div>
+</div>
