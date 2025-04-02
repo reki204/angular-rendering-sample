@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:angular-rendering-sample": "node dist/angular-rendering-sample/server/server.mjs"
+    "serve:ssr": "node dist/angular-rendering-sample/server/server.mjs"
   },
   "private": true,
   "dependencies": {
