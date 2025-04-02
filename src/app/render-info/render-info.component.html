@@ -1,0 +1,19 @@
+<div
+  class="fixed bottom-4 right-4 p-4 bg-white shadow-lg rounded-lg z-50 border-2"
+  [ngClass]="getBorderClass()"
+>
+  <h3 class="font-bold text-lg mb-2">レンダリング情報</h3>
+  <div class="grid grid-cols-2 gap-2">
+    <div class="font-semibold">モード:</div>
+    <div>{{ renderingMode | uppercase }}</div>
+
+    <div class="font-semibold">プラットフォーム:</div>
+    <div>{{ isServer() ? "サーバー" : "ブラウザ" }}</div>
+
+    <div class="font-semibold">レンダリング時間:</div>
+    <div>{{ renderTime }}ms</div>
+
+    <div class="font-semibold">ハイドレーション:</div>
+    <div>{{ isHydrated ? "完了" : "未完了" }}</div>
+  </div>
+</div>
