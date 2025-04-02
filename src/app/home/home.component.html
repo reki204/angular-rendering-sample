@@ -1,8 +1,48 @@
 <div class="container mx-auto py-8">
-  <a
-    routerLink="/posts"
-    routerLinkActive="active"
-    ariaCurrentWhenActive="page"
-    >Post Component
-  </a>
+  <div class="text-center mb-8">
+    <h1 class="text-3xl font-bold mb-4">
+      Angular ハイブリッドレンダリングデモ
+    </h1>
+    <div class="inline-block bg-blue-100 p-4 rounded-lg">
+      <p class="text-lg">
+        このページは
+        <span class="font-bold">{{ renderingMode | uppercase }}</span>
+        モードでレンダリングされています
+      </p>
+    </div>
+  </div>
+
+  <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+    <h2 class="text-xl font-bold mb-4">レンダリングモードの説明</h2>
+    <ul class="list-disc pl-6 space-y-2">
+      <li>
+        <span class="font-bold text-blue-600">CLIENT:</span>
+        クライアントサイドレンダリング。すべての処理がブラウザで行われます。
+        <a routerLink="/" class="text-blue-600 hover:underline">(このページ)</a>
+      </li>
+      <li>
+        <span class="font-bold text-amber-600">PRERENDERED:</span>
+        ビルド時に静的に生成されます。
+        <a routerLink="/posts" class="text-blue-600 hover:underline"
+          >(記事一覧ページ)</a
+        >
+      </li>
+      <li>
+        <span class="font-bold text-green-600">SERVER:</span>
+        リクエスト時にサーバーでレンダリングされます。
+        <a routerLink="/posts/1" class="text-blue-600 hover:underline"
+          >(記事詳細ページ)</a
+        >
+      </li>
+    </ul>
+  </div>
+
+  <div class="text-center">
+    <a
+      routerLink="/posts"
+      class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition font-medium"
+    >
+      記事一覧を見る (Prerendered)
+    </a>
+  </div>
 </div>

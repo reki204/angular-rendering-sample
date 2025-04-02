@@ -1,10 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { RenderInfoService, RenderingMode } from '../render-info.service';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, RouterModule, RouterLink, RouterLinkActive],
+  imports: [CommonModule, RouterModule],
   templateUrl: './home.component.html',
 })
-export class HomeComponent {}
+export class HomeComponent {
+  private readonly renderInfoService = inject(RenderInfoService);
+  renderingMode = this.renderInfoService.getRenderingMode();
+}
