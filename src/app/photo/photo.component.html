@@ -1,0 +1,29 @@
+<div class="container mx-auto py-8">
+  <div class="bg-green-100 p-4 rounded-lg mb-6">
+    <p class="text-center">
+      このページは
+      <span class="font-bold">{{ renderingMode | uppercase }}</span>
+      モードでレンダリングされています
+    </p>
+    <p class="text-center text-sm mt-2">
+      取得時刻: {{ fetchTime | date : "yyyy-MM-dd HH:mm:ss" }}
+      <span class="ml-2 px-2 py-1 bg-green-200 rounded text-xs">
+        {{ isServer ? "サーバーで生成" : "クライアントで再取得" }}
+      </span>
+    </p>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6">
+    @for (photo of photos; track photo.id) {
+    <div
+      class="bg-white shadow-md rounded-lg p-6 hover:shadow-xl transition-shadow"
+    >
+      <h2 class="text-sm font-semibold mb-3">
+        <a class="text-blue-600 hover:underline">
+          {{ photo.title }}
+        </a>
+      </h2>
+    </div>
+    }
+  </div>
+</div>

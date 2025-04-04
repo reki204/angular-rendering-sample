@@ -13,4 +13,8 @@ export const serverRoutes: ServerRoute[] = [
     path: 'posts/:id',
     renderMode: RenderMode.Server,
   },
+  {
+    path: 'photos',
+    renderMode: RenderMode.Server,
+  },
 ];
