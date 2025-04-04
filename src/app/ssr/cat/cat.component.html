@@ -1,0 +1,37 @@
+<div class="container mx-auto py-8">
+  <div class="bg-green-100 p-4 rounded-lg mb-6">
+    <p class="text-center">
+      このページは
+      <span class="font-bold">{{ renderingMode | uppercase }}</span>
+      モードでレンダリングされています
+    </p>
+    <p class="text-center text-sm mt-2">
+      取得時刻: {{ fetchTime | date : "yyyy-MM-dd HH:mm:ss" }}
+      <span class="ml-2 px-2 py-1 bg-green-200 rounded text-xs">
+        {{ isServer ? "サーバーで生成" : "クライアントで再取得" }}
+      </span>
+    </p>
+  </div>
+
+  <div class="text-center mb-5">
+    <button
+      (click)="fetchCatImage()"
+      class="mt-6 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition cursor-pointer"
+    >
+      新しい猫画像を取得
+    </button>
+  </div>
+  <div class="grid md:grid-cols-2 gap-6">
+    @for (cat of cats; track cat.id) {
+    <div
+      class="bg-white shadow-md rounded-lg p-6 hover:shadow-xl transition-shadow"
+    >
+      <img
+        [src]="cat.url"
+        alt="Random Cat"
+        class="mx-auto rounded shadow max-w-full"
+      />
+    </div>
+    }
+  </div>
+</div>

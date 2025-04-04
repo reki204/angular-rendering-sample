@@ -6,15 +6,11 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Client,
   },
   {
-    path: 'posts',
+    path: 'ssg/cats',
     renderMode: RenderMode.Prerender,
   },
   {
-    path: 'posts/:id',
-    renderMode: RenderMode.Server,
-  },
-  {
-    path: 'photos',
+    path: 'ssr/cats',
     renderMode: RenderMode.Server,
   },
 ];

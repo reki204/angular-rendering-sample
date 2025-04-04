@@ -23,14 +23,14 @@
       <li>
         <span class="font-bold text-amber-600">PRERENDERED:</span>
         ビルド時に静的に生成されます。
-        <a routerLink="/posts" class="text-blue-600 hover:underline"
+        <a routerLink="/ssg/cats" class="text-blue-600 hover:underline"
           >(記事一覧ページ)</a
         >
       </li>
       <li>
         <span class="font-bold text-green-600">SERVER:</span>
         リクエスト時にサーバーでレンダリングされます。
-        <a routerLink="/posts/1" class="text-blue-600 hover:underline"
+        <a routerLink="/ssr/cats" class="text-blue-600 hover:underline"
           >(記事詳細ページ)</a
         >
       </li>
@@ -39,16 +39,16 @@
 
   <div class="flex justify-center space-x-4">
     <a
-      routerLink="/posts"
-      class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition font-medium"
+      routerLink="/ssg/cats"
+      class="bg-amber-500 text-white px-6 py-3 rounded-lg hover:bg-amber-600 transition font-medium"
     >
-      記事一覧を見る (Prerendered)
+      猫の写真一覧を見る (Prerendered)
     </a>
     <a
-      routerLink="/photos"
-      class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition font-medium"
+      routerLink="/ssr/cats"
+      class="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition font-medium"
     >
-      写真一覧を見る (Server)
+      猫の写真一覧を見る (Server)
     </a>
   </div>
 </div>

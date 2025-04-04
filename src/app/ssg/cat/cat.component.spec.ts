@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PhotoComponent } from './photo.component';
+import { SSGCatComponent } from './cat.component';
 
-describe('PhotoComponent', () => {
-  let component: PhotoComponent;
-  let fixture: ComponentFixture<PhotoComponent>;
+describe('CatComponent', () => {
+  let component: SSGCatComponent;
+  let fixture: ComponentFixture<SSGCatComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PhotoComponent]
+      imports: [SSGCatComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PhotoComponent);
+    fixture = TestBed.createComponent(SSGCatComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

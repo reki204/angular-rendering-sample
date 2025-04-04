@@ -15,7 +15,7 @@ export class RenderInfoService {
       return 'server';
     } else if (isPlatformBrowser(this.platformId)) {
       const path = window.location.pathname;
-      if (path.startsWith('/posts') && !path.includes('/', 6)) {
+      if (path.startsWith('/ssg') && !path.includes('/', 6)) {
         return 'prerendered';
       } else if (path.match(/\/posts\/\d+/)) {
         return 'server';
