@@ -44,7 +44,7 @@ export class SSGCatComponent implements OnInit {
       this.cats = this.transferState.get(CAT_KEY, []);
       this.transferState.remove(CAT_KEY);
     } else {
-      this.catService.getPhotos().subscribe((data) => {
+      this.catService.getCats().subscribe((data) => {
         this.cats = data;
         if (this.isServer) {
           this.transferState.set(CAT_KEY, data);
@@ -54,7 +54,7 @@ export class SSGCatComponent implements OnInit {
   }
 
   public fetchCatImage() {
-    this.catService.getPhotos().subscribe((data) => {
+    this.catService.getCats().subscribe((data) => {
       this.cats = data;
     });
   }

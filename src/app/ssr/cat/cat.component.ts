@@ -22,7 +22,7 @@ export class SSRCatComponent {
   }
 
   public fetchCatImage() {
-    this.catService.getPhotos().subscribe((data) => {
+    this.catService.getCats().subscribe((data) => {
       this.cats = data;
     });
   }

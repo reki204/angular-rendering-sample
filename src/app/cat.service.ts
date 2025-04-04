@@ -15,7 +15,7 @@ export interface Cat {
 export class CatService {
   private readonly http = inject(HttpClient);
 
-  public getPhotos(): Observable<Cat[]> {
+  public getCats(): Observable<Cat[]> {
     return this.http.get<Cat[]>(
       'https://api.thecatapi.com/v1/images/search?limit=10'
     );

@@ -17,7 +17,7 @@ export class RenderInfoService {
       const path = window.location.pathname;
       if (path.startsWith('/ssg') && !path.includes('/', 6)) {
         return 'prerendered';
-      } else if (path.match(/\/posts\/\d+/)) {
+      } else if (path.startsWith('/ssr')) {
         return 'server';
       }
       return 'client';
