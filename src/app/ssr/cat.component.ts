@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { Cat, CatService } from '../../cat.service';
-import { RenderInfoService } from '../../render-info.service';
+import { Cat, CatService } from '../cat.service';
+import { RenderInfoService } from '../render-info.service';
 
 @Component({
   selector: 'app-cat',

@@ -6,8 +6,8 @@ import {
   TransferState,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Cat, CatService } from '../../cat.service';
-import { RenderInfoService } from '../../render-info.service';
+import { Cat, CatService } from '../cat.service';
+import { RenderInfoService } from '../render-info.service';
 
 const CAT_KEY = makeStateKey<Cat[]>('cats');
 const GENERATED_AT_KEY = makeStateKey<number>('generatedAt');
