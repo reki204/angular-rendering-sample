@@ -1,59 +1,73 @@
-# AngularRenderingSample
+# Angular Rendering Sample
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+**Angular 19 のハイブリッドレンダリング**機能を活用して、**CSR（クライアントサイドレンダリング）**、**SSR（サーバーサイドレンダリング）**、**SSG（静的サイト生成）**、**ISR（静的サイト再生成）** の各レンダリングパターンを実装したアプリケーションです。
 
-## Development server
+## 特徴
 
-To start a local development server, run:
+- **Angular 19 ハイブリッドレンダリング**  
+  Angular 19 の機能を用い、CSR、SSR、SSG、ISR の各パターンを実装。  
+  初回ロード時はサーバーまたはビルド時に生成された HTML を提供し、クライアント側で必要に応じた更新が行われます。
 
-```bash
-ng serve
-```
+- **対応レンダリングモード**
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+  - **CSR:** ブラウザで JavaScript によりコンテンツを動的に構築
+  - **SSR:** 各リクエストごとにサーバー側で完全な HTML を生成
+  - **SSG:** ビルド時に静的 HTML を生成し、初回リクエストでその HTML を返す
+  - **ISR:** SSG の仕組みに加え、一定時間（例：10 秒）ごとにバックグラウンドで再生成（revalidate）し、最新コンテンツに更新します。
 
-## Code scaffolding
+- **ランダムな猫画像ギャラリー**  
+  [The Cat API](https://thecatapi.com/) を利用して、毎回異なる猫画像を JSON 形式で取得。ボタン操作によりクライアント側で動的に画像更新が可能です。
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 使用技術
 
-```bash
-ng generate component component-name
-```
+- **Angular 19** – 最新のフレームワークをベースに、ハイブリッドレンダリング機能を活用
+- **Hybrid Rendering** – SSR と SSG を実現
+- **Rx-Angular ISR** – ISR を実装し、一定間隔でのバックグラウンド更新を実現
+- **TransferState** – サーバーからクライアントへのデータ転送を最適化
+- **Tailwind CSS** – モダンなデザインの実装
+- **The Cat API** – ランダムな猫画像を提供する無料 API
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## はじめに
 
-```bash
-ng generate --help
-```
+### 前提条件
 
-## Building
+- [Node.js](https://nodejs.org/)（推奨バージョン：v18 以上）
+- [Angular CLI](https://angular.io/cli) v 19.2.0
 
-To build the project run:
+### インストール方法
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+リポジトリをクローンして依存関係をインストールします。
 
 ```bash
-ng test
+npm install
 ```
 
-## Running end-to-end tests
+### 開発モードでの起動
 
-For end-to-end (e2e) testing, run:
+CSR モードで開発サーバーを起動する場合：
 
 ```bash
-ng e2e
+npm run start
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+ブラウザで http://localhost:4200 を開いて確認してください。
 
-## Additional Resources
+SSR/SSG/ISR モードで開発サーバーを起動する場合：
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+npm run build
+npm run serve:ssr
+```
+
+ブラウザで http://localhost:4000 を開いて確認してください。
+
+## プロジェクト構成
+
+- src/app/
+  - cat.service.ts: 猫画像を取得するためのサービス
+  - 各レンダリングモード用コンポーネント:
+    - CSR: クライアントサイドレンダリングの挙動を示すコンポーネント
+    - SSR: サーバーサイドレンダリングの挙動を示すコンポーネント
+    - SSG: 静的サイト生成されたページを表示するコンポーネント
+    - ISR: Rx-Angular ISR を利用して、一定間隔で再生成されたデータを表示するコンポーネント
+  - render-info.service.ts: 現在のレンダリングモード（CSR/SSR/SSG/ISR）を判定するためのサービス
