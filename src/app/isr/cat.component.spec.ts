@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CatComponent } from './cat.component';
+import { ISRCatComponent } from './cat.component';
 
 describe('CatComponent', () => {
-  let component: CatComponent;
-  let fixture: ComponentFixture<CatComponent>;
+  let component: ISRCatComponent;
+  let fixture: ComponentFixture<ISRCatComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CatComponent]
+      imports: [ISRCatComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CatComponent);
+    fixture = TestBed.createComponent(ISRCatComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

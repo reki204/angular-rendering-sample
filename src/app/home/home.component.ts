@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { RenderInfoService, RenderingMode } from '../render-info.service';
+import { RenderInfoService } from '../render-info.service';
 
 @Component({
   selector: 'app-home',

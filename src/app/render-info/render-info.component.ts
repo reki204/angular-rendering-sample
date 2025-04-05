@@ -38,6 +38,8 @@ export class RenderInfoComponent implements OnInit {
         return 'border-green-500';
       case 'prerendered':
         return 'border-amber-500';
+      case 'ISR':
+        return 'border-purple-500';
       default:
         return 'border-gray-500';
     }

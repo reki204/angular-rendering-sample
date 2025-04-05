@@ -1,7 +1,7 @@
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 
-export type RenderingMode = 'client' | 'server' | 'prerendered';
+export type RenderingMode = 'client' | 'server' | 'prerendered' | 'ISR';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,7 @@ export class RenderInfoService {
   private renderStartTime = Date.now();
 
   public getRenderingMode(): RenderingMode {
-    if (isPlatformServer(this.platformId)) {
+    if (this.isServer()) {
       return 'server';
     } else if (isPlatformBrowser(this.platformId)) {
       const path = window.location.pathname;
@@ -19,6 +19,8 @@ export class RenderInfoService {
         return 'prerendered';
       } else if (path.startsWith('/ssr')) {
         return 'server';
+      } else if (path.startsWith('/isr')) {
+        return 'ISR';
       }
       return 'client';
     }

@@ -1,30 +1,36 @@
 import {
   AngularNodeAppEngine,
+  CommonEngine,
   createNodeRequestHandler,
   isMainModule,
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
 import express from 'express';
-import { dirname, resolve } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { ISRHandler } from '@rx-angular/isr/server';
+import bootstrap from './main.server';
 
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
+const indexHtml = join(serverDistFolder, 'index.server.html');
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
-/**
- * Example Express Rest API endpoints can be defined here.
- * Uncomment and define endpoints as necessary.
- *
- * Example:
- * ```ts
- * app.get('/api/**', (req, res) => {
- *   // Handle API request
- * });
- * ```
- */
+const commonEngine = new CommonEngine();
+const allowedQueryParams = ['page'];
+
+const isr = new ISRHandler({
+  indexHtml,
+  invalidateSecretToken: 'MY_TOKEN',
+  enableLogging: true,
+  serverDistFolder,
+  browserDistFolder,
+  bootstrap,
+  commonEngine,
+  allowedQueryParams,
+});
 
 /**
  * Serve static files from /browser
@@ -34,17 +40,25 @@ app.use(
     maxAge: '1y',
     index: false,
     redirect: false,
-  }),
+  })
 );
 
-/**
- * Handle all other requests by rendering the Angular application.
- */
+// ISR のキャッシュ無効化エンドポイント
+app.post('/api/invalidate', async (req, res) => await isr.invalidate(req, res));
+
+// '/isr/cats'の GETリクエストをISRHandlerで処理する。
+// まずキャッシュからの提供を試み、なければSSRでレンダリングしてキャッシュに保存する。
+app.get(
+  '/isr/cats',
+  async (req, res, next) => await isr.serveFromCache(req, res, next),
+  async (req, res, next) => await isr.render(req, res, next)
+);
+
 app.use('/**', (req, res, next) => {
   angularApp
     .handle(req)
     .then((response) =>
-      response ? writeResponseToNodeResponse(response, res) : next(),
+      response ? writeResponseToNodeResponse(response, res) : next()
     )
     .catch(next);
 });

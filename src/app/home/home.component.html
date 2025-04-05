@@ -34,21 +34,34 @@
           >(猫一覧ページ)</a
         >
       </li>
+      <li>
+        <span class="font-bold text-purple-600">ISR:</span>
+        リクエスト時にサーバーでレンダリングされます。
+        <a routerLink="/isr/cats" class="text-blue-600 hover:underline"
+          >(猫一覧ページ)</a
+        >
+      </li>
     </ul>
   </div>
 
   <div class="flex justify-center space-x-4">
     <a
-      routerLink="/ssg/cats"
+      href="/ssg/cats"
       class="bg-amber-500 text-white px-6 py-3 rounded-lg hover:bg-amber-600 transition font-medium"
     >
       猫の写真一覧を見る (Prerendered)
     </a>
     <a
-      routerLink="/ssr/cats"
+      href="/ssr/cats"
       class="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition font-medium"
     >
       猫の写真一覧を見る (Server)
+    </a>
+    <a
+      href="/isr/cats"
+      class="bg-purple-500 text-white px-6 py-3 rounded-lg hover:bg-purple-600 transition font-medium"
+    >
+      猫の写真一覧を見る (ISR)
     </a>
   </div>
 </div>
