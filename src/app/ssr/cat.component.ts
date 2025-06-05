@@ -24,6 +24,9 @@ export class SSRCatComponent {
   public fetchCatImage() {
     this.catService.getCats().subscribe((data) => {
       this.cats = data;
+      this.fetchTime = new Date();
+      // After hydration ensure the platform state is updated
+      this.isServer = this.renderInfoService.isServer();
     });
   }
 }
