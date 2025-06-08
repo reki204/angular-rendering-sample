@@ -3,6 +3,7 @@ import { HomeComponent } from './home/home.component';
 import { SSGCatComponent } from './ssg/cat.component';
 import { SSRCatComponent } from './ssr/cat.component';
 import { ISRCatComponent } from './isr/cat.component';
+import { PPRCatComponent } from './ppr/cat.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,4 +16,5 @@ export const routes: Routes = [
       revalidate: 10,
     },
   },
+  { path: 'ppr/cats', component: PPRCatComponent },
 ];

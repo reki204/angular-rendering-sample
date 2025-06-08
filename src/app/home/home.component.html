@@ -41,6 +41,13 @@
           >(猫一覧ページ)</a
         >
       </li>
+      <li>
+        <span class="font-bold text-pink-600">PPR:</span>
+        ビルド時に静的な HTML を生成し、動的データはクライアントで取得します。
+        <a routerLink="/ppr/cats" class="text-blue-600 hover:underline"
+          >(猫一覧ページ)</a
+        >
+      </li>
     </ul>
   </div>
 
@@ -62,6 +69,12 @@
       class="bg-purple-500 text-white px-6 py-3 rounded-lg hover:bg-purple-600 transition font-medium"
     >
       猫の写真一覧を見る (ISR)
+    </a>
+    <a
+      href="/ppr/cats"
+      class="bg-pink-500 text-white px-6 py-3 rounded-lg hover:bg-pink-600 transition font-medium"
+    >
+      猫の写真一覧を見る (PPR)
     </a>
   </div>
 </div>

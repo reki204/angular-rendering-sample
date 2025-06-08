@@ -17,4 +17,8 @@ export const serverRoutes: ServerRoute[] = [
     path: 'isr/cats',
     renderMode: RenderMode.Prerender,
   },
+  {
+    path: 'ppr/cats',
+    renderMode: RenderMode.Prerender,
+  },
 ];

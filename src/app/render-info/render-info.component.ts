@@ -40,6 +40,8 @@ export class RenderInfoComponent implements OnInit {
         return 'border-amber-500';
       case 'ISR':
         return 'border-purple-500';
+      case 'PPR':
+        return 'border-pink-500';
       default:
         return 'border-gray-500';
     }
